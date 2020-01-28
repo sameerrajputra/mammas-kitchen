@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\ReservationConfirmed;
 use App\Reservation;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -28,5 +29,10 @@ class ReservationController extends Controller
 
         Toastr::success('Reservation request sent successfully. We will confirm to you shortly', 'Success', ["positionClass"=>"toast-top-right"]);
         return redirect()->back();
+    }
+
+    public function destroy()
+    {
+        
     }
 }

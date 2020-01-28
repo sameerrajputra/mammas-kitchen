@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::post('/', 'ReservationController@reserve')->name('reservation.reserve');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/contact', 'ContactController@sendMessage')->name('contact.send');
 
 Auth::routes();
 
@@ -26,7 +27,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth', 'namespace'=>'admin'], fu
 	Route::resource('slider', 'SliderController');
 	Route::resource('category', 'CategoryController');
 	Route::resource('item', 'ItemController');
-	Route::post('reservation/{id}','ReservationController@destroy')->name('reservation.destroy');
-	Route::post('reservation/{id}','ReservationController@update')->name('reservation.update');
+	Route::delete('reservation/{id}','ReservationController@destroy')->name('reservation.destroy');
+	Route::put('reservation/{id}','ReservationController@update')->name('reservation.update');
 	Route::get('reservation', 'ReservationController@index')->name('reservation.index');
+	Route::get('contact', 'ContactController@index')->name('contact.index');
 });
